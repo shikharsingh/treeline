@@ -1,0 +1,1 @@
+{"attributes":{"PostId":{"type":"float","defaultsTo":null},"UserId":{"type":"float","defaultsTo":null},"isUpvote":{"type":"boolean","defaultsTo":null},"isDownvote":{"type":"boolean","defaultsTo":null}},"globalId":"Votes","identity":"votes"}

@@ -1,0 +1,1 @@
+{"attributes":{"Email":{"type":"string","defaultsTo":null},"Password":{"type":"string","defaultsTo":null},"Name":{"type":"string","defaultsTo":null}},"globalId":"Users","identity":"users"}

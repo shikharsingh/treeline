@@ -1,0 +1,1 @@
+{"attributes":{"Title":{"type":"string","defaultsTo":null},"Source":{"type":"string","defaultsTo":null},"Body":{"type":"string","defaultsTo":null},"ImageURL":{"type":"string","defaultsTo":null},"PostingUserId":{"type":"float","defaultsTo":null}},"globalId":"Post","identity":"post"}

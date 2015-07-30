@@ -1,0 +1,166 @@
+<div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12 text-center" style='margin-top: 10%'>
+                <div>
+                    <img src="images/gmaps-project.png"/ style=' float: left; width: 30%;'>
+                </div>
+                <div class="col-lg-8" style="float: left; text-align: center;">
+                    <h2>Maps - Points of Interest</h2>
+                    <hr class="star-primary">
+                    <p>
+                        This is a proof of concept for selecting points on a map and otherwise providing
+                        additional information. The end goal is to save the points of interest with the description given and place them on a map for other users.
+                    </p>
+                </div>
+
+                <br>
+
+            </div>
+        </div>
+        <!-- /.row -->
+        </row>
+        <hr>
+        <div class="col-lg-12">
+          <h1> Step 1 - What's Interesting? </h1>
+          <div id="detailsForm" class="col-lg-6">
+            <form>
+            <div class="form-group">
+              <label for="Latitude">Name</label>
+              <input type="text" class="form-control" id='Name' placeholder="What do you call it?">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">Description</label>
+              <input type="text" class="form-control" id='Longitude' placeholder="How would you describe it?">
+            </div>
+            <input id="lat" type = 'text' style="display: none;"/>
+            <input id="long" type = 'text' style="display: none;"/>
+            </form>
+          </div>
+          <div class="col-lg-4">
+              <ul id="markers-with-coordinates">
+                <!-- this is where markers go -->
+              </ul>
+          </div>
+        </div>
+    <h1> Step 2: Where is it?
+    </div>
+        <row>
+        <div class='col-lg-12'
+
+        <div style="height: 400px;" id="map">
+        </div>
+        <center>
+        <button type="submit" id='savepoi' class="btn btn-warning">Save to Map</button>
+      </center>
+        </row>
+    </h3>
+
+</div>
+
+
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="js/gmaps.js"></script>
+
+<script>
+var map;
+
+// Update position
+$(document).on('submit', '.edit_marker', function(e) {
+e.preventDefault();
+
+var $index = $(this).data('marker-index');
+
+$lat = $('#marker_' + $index + '_lat').val();
+$lng = $('#marker_' + $index + '_lng').val();
+
+var template = $('#edit_marker_template').text();
+
+// Update form values
+var content = template.replace(/{{index}}/g, $index).replace(/{{lat}}/g, $lat).replace(/{{lng}}/g, $lng);
+
+map.markers[$index].setPosition(new google.maps.LatLng($lat, $lng));
+map.markers[$index].infoWindow.setContent(content);
+
+$marker = $('#markers-with-coordinates').find('li').eq(0).find('a');
+$marker.data('marker-lat', $lat);
+$marker.data('marker-lng', $lng);
+});
+
+// Update center
+$(document).on('click', '.pan-to-marker', function(e) {
+e.preventDefault();
+
+var lat, lng;
+
+var $index = $(this).data('marker-index');
+var $lat = $(this).data('marker-lat');
+var $lng = $(this).data('marker-lng');
+
+if ($index != undefined) {
+  // using indices
+  var position = map.markers[$index].getPosition();
+  lat = position.lat();
+  lng = position.lng();
+}
+else {
+  // using coordinates
+  lat = $lat;
+  lng = $lng;
+}
+
+map.setCenter(lat, lng);
+});
+
+$(document).ready(function(){
+
+map = new GMaps({
+  div: '#map',
+  zoom: 11,
+  lat: 30.25,
+  lng: -97.75,
+});
+
+GMaps.on('marker_added', map, function(marker) {
+  $('#markers-with-index').append('<li><a href="#" class="pan-to-marker" data-marker-index="' + map.markers.indexOf(marker) + '">' + marker.title + '</a></li>');
+
+  $('#markers-with-coordinates').append('<li><a href="#" class="pan-to-marker" data-marker-lat="' + marker.getPosition().lat() + '" data-marker-lng="' + marker.getPosition().lng() + '">' + marker.title + '</a></li>');
+
+    $("#detailsForm").show();
+    $('#lat').val(marker.getPosition().lng())
+    $('#long').val(marker.getPosition().lng())
+
+
+});
+
+
+$('#savepoi').click(function(e){
+    index = $('#index');
+    map.markers[index].infoWindow.content = "hello world 2";
+});
+
+
+GMaps.on('click', map.map, function(event) {
+  var index = map.markers.length;
+  var lat = event.latLng.lat();
+  var lng = event.latLng.lng();
+
+  var template = $('#edit_marker_template').text();
+
+  var content = template.replace(/{{index}}/g, index).replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+  map.addMarker({
+    lat: lat,
+    lng: lng,
+    title: $('#title').val(),
+    infoWindow: {
+      content : $('#description').val()
+    }
+  });
+});
+});
+
+</script>

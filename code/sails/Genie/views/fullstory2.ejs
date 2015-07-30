@@ -1,0 +1,54 @@
+
+
+    <!-- Page Content -->
+    <div class="container">
+      <section id="portfolio" style="margin-top: 5%">
+          <div class="container">
+              <div class="row">
+                <h1> <% upvotes %> </h1>
+                    <h1 class="col-lg-8" style='display: inline; text-indent: 0.5em'> <%= post.Title %> </h1>
+                    <div style='Actions'>
+                      <a style="margin-left: 15px;" class="btn btn-default" href='/newsfeed'><span class="glyphicon glyphicons-undo"></span> Back </a>
+
+
+                      <a style="margin-left: 15px;" class="btn btn-danger" href='/story/delete?id=<%=post.id%>'><span class="glyphicon glyphicon-remove"></span> Delete Post </a>
+
+                      <a style="margin-left: 15px;" disabled='disabled' class="btn btn-success" href='/story/edit?id=<%=post.id%>'><span class="glyphicon glyphicon-remove"></span> Edit Post </a>
+
+                    </div>
+              </div>>
+              <blockquote>
+              <div class="row">
+              <div class="col-md-12">
+                 <%if (post.ImageURL == '') { %>
+                      <a href="#">
+                          <img style='width=100%;' class="img-responsive" src="https://www.rivaliq.com/wp-content/uploads/2014/01/nodejs_0.png" alt="">
+                      </a>
+                      <% } else { %>
+                        <a href="#">
+                          <img style='width=100%;' src="<%=post.ImageURL%>" alt="">
+                        </a>
+                      <% } %>
+                  </div>
+              </div>
+              <hr>
+              <div class="row">
+              <p style='text-indent: 1em; font-size: 14pt;'>
+                    <%- post.Body %>
+              </p>
+                </blockquote>
+              </div>
+      </section>
+
+    </div>
+    <!-- /.container -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+   <script>
+       $( document ).ready(function() {
+       console.log( "document loaded" );
+       $("img").addClass("image-wrap")
+       });
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{
+  "dependencies": {},
+  "machinepack": {
+    "machines": ["create_comments", "create_post", "create_sources", "create_users", "create_votes", "destroy_comments", "destroy_post", "destroy_sources", "destroy_users", "destroy_votes", "findOne_comments", "findOne_post", "findOne_sources", "findOne_users", "findOne_votes", "find_comments", "find_post", "find_sources", "find_users", "find_votes", "mapsapi", "TestMachine", "update_comments", "update_post", "update_sources", "update_users", "update_votes"],
+    "machineVersions": {
+      "create_comments": "0.0.0",
+      "create_post": "0.0.5",
+      "create_sources": "0.0.0",
+      "create_users": "0.0.3",
+      "create_votes": "0.0.4",
+      "destroy_comments": "0.0.0",
+      "destroy_post": "0.0.5",
+      "destroy_sources": "0.0.0",
+      "destroy_users": "0.0.3",
+      "destroy_votes": "0.0.4",
+      "findOne_comments": "0.0.0",
+      "findOne_post": "0.0.5",
+      "findOne_sources": "0.0.0",
+      "findOne_users": "0.0.3",
+      "findOne_votes": "0.0.4",
+      "find_comments": "0.0.0",
+      "find_post": "0.0.5",
+      "find_sources": "0.0.0",
+      "find_users": "0.0.3",
+      "find_votes": "0.0.4",
+      "mapsapi": "0.0.0",
+      "TestMachine": "0.0.29",
+      "update_comments": "0.0.0",
+      "update_post": "0.0.5",
+      "update_sources": "0.0.0",
+      "update_users": "0.0.3",
+      "update_votes": "0.0.4"
+    }
+  }
+}
