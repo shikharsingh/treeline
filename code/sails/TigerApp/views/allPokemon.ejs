@@ -1,0 +1,17 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+	<div class="container">
+		<h1> Welcome to Tiger Direct </h1>
+		<h2> all Pokemon </h2>
+
+		<ul>
+		<% for(var i=0; i< listallpokemon.length; i++) {%>
+   		<li><%= listallpokemon.pokemon.name %></li>
+		<% } %>
+</ul>
+
+</div>
+</html>
